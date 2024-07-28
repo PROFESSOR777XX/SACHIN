@@ -40,9 +40,20 @@ SPAM_WINDOW_SECONDS = 5
 
 
 YUMI_PICS = [
-    "https://telegra.ph/file/3134ed3b57eb051b8c363.jpg",
-    "https://telegra.ph/file/5a2cbb9deb62ba4b122e4.jpg",
-    "https://telegra.ph/file/cb09d52a9555883eb0f61.jpg",
+    "https://telegra.ph//file/07bb5f805178ec24871d3.jpg",
+    "https://telegra.ph//file/f8ba75bdbb9931cbc8229.jpg",
+    "https://telegra.ph//file/a7cba6e78bb63e1b4aefb.jpg",
+    "https://telegra.ph//file/82ff887aad046c3bcc9a3.jpg",
+    "https://telegra.ph//file/0afd9c2f70c6328a1e53a.jpg",
+    "https://telegra.ph//file/72e4414f618111ea90a57.jpg",
+    "https://telegra.ph//file/2ddf3521636d4b17df6dd.jpg",
+    "https://telegra.ph//file/bc97b1e9bbe6d6db36984.jpg",
+    "https://telegra.ph//file/610cc4522c7d0f69e1eb8.jpg",
+    "https://telegra.ph//file/3b996e3241cf93d102adc.jpg",
+    "https://telegra.ph//file/dd00c759805082830b6b6.jpg",
+    "https://telegra.ph//file/b1f7d9702f8ea590b2e0c.jpg",
+    "https://telegra.ph//file/e05d6e4faff7497c5ae56.jpg",
+    "https://telegra.ph//file/d169a77fd52b46e421414.jpg"
 ]
 
 
@@ -250,22 +261,22 @@ async def welcome(client, message: Message):
                     if message.chat.username:
                         await userbot.join_chat(f"{message.chat.username}")
                         await message.reply_text(
-                            f"**My [Assistant](tg://openmessage?user_id={userbot.id}) also entered the chat using the group's username.**"
+                            f"**ᴍʏ [ᴀꜱꜱɪꜱᴛᴀɴᴛ](tg://openmessage?user_id={userbot.id}) ʜᴀꜱ ᴊᴏɪɴᴇᴅ ᴛʜᴇ ᴄʜᴀᴛ ᴛʜʀᴏᴜɢʜ ᴛʜᴇ ɢʀᴏᴜᴘ'ꜱ ᴜꜱᴇʀɴᴀᴍᴇ!**"
                         )
                     else:
                         invitelink = await app.export_chat_invite_link(chid)
                         await asyncio.sleep(1)
                         messages = await message.reply_text(
-                            f"**Joining my [Assistant](tg://openmessage?user_id={userbot.id}) using the invite link...**"
+                            f"**ᴍʏ [ᴀꜱꜱɪꜱᴛᴀɴᴛ](tg://openmessage?user_id={userbot.id}) ɪꜱ ɴᴏᴡ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ, ᴛʜᴀɴᴋꜱ ᴛᴏ ᴛʜᴇ ɪɴᴠɪᴛᴇ ʟɪɴᴋ!**"
                         )
                         await userbot.join_chat(invitelink)
                         await messages.delete()
                         await message.reply_text(
-                            f"**My [Assistant](tg://openmessage?user_id={userbot.id}) also entered the chat using the invite link.**"
+                            f"**ɢᴜᴇꜱꜱ ᴡʜᴏ ᴊᴜꜱᴛ ᴊᴏɪɴᴇᴅ ᴛʜᴇ ᴄʜᴀᴛ? ɪᴛ'ꜱ ᴍʏ [ᴀꜱꜱɪꜱᴛᴀɴᴛ](tg://openmessage?user_id={userbot.id}) ᴜꜱɪɴɢ ᴛʜᴇ ɪɴᴠɪᴛᴇ ʟɪɴᴋ!**"
                         )
                 except Exception as e:
                     await message.edit_text(
-                        f"**Please make me admin to invite my [Assistant](tg://openmessage?user_id={userbot.id}) in this chat.**"
+                        f"**ᴘʟᴇᴀꜱᴇ ᴍᴀᴋᴇ ᴍᴇ ᴀᴅᴍɪɴ ᴛᴏ ɪɴᴠɪᴛᴇ ᴍʏ [ᴀꜱꜱɪꜱᴛᴀɴᴛ](tg://openmessage?user_id={userbot.id}) ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ.**"
                     )
 
                 await message.reply_photo(
