@@ -11,6 +11,7 @@ from youtubesearchpython.__future__ import VideosSearch
 from VIPMUSIC.utils.database import is_on_off
 from VIPMUSIC.utils.formatters import time_to_seconds
 
+COOKIES_FILE_PATH = "path/to/your/cookies.txt"  # Update with the local path to cookies.txt
 
 async def shell_cmd(cmd):
     proc = await asyncio.create_subprocess_shell(
@@ -25,7 +26,6 @@ async def shell_cmd(cmd):
         else:
             return errorz.decode("utf-8")
     return out.decode("utf-8")
-
 
 class YouTubeAPI:
     def __init__(self):
@@ -121,6 +121,7 @@ class YouTubeAPI:
             link = link.split("&")[0]
         proc = await asyncio.create_subprocess_exec(
             "yt-dlp",
+            "--cookies", COOKIES_FILE_PATH,  # Added cookies
             "-g",
             "-f",
             "best[height<=?720][width<=?1280]",
@@ -140,7 +141,7 @@ class YouTubeAPI:
         if "&" in link:
             link = link.split("&")[0]
         playlist = await shell_cmd(
-            f"yt-dlp -i --get-id --flat-playlist --playlist-end {limit} --skip-download {link}"
+            f"yt-dlp --cookies {COOKIES_FILE_PATH} -i --get-id --flat-playlist --playlist-end {limit} --skip-download {link}"
         )
         try:
             result = playlist.split("\n")
@@ -177,7 +178,10 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        ytdl_opts = {"quiet": True}
+        ytdl_opts = {
+            "quiet": True,
+            "cookies": COOKIES_FILE_PATH  # Added cookies
+        }
         ydl = yt_dlp.YoutubeDL(ytdl_opts)
         with ydl:
             formats_available = []
@@ -249,6 +253,7 @@ class YouTubeAPI:
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
+                "cookies": COOKIES_FILE_PATH  # Added cookies
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
@@ -266,6 +271,7 @@ class YouTubeAPI:
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
+                "cookies": COOKIES_FILE_PATH  # Added cookies
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
@@ -287,6 +293,7 @@ class YouTubeAPI:
                 "no_warnings": True,
                 "prefer_ffmpeg": True,
                 "merge_output_format": "mp4",
+                "cookies": COOKIES_FILE_PATH  # Added cookies
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             x.download([link])
@@ -308,6 +315,7 @@ class YouTubeAPI:
                         "preferredquality": "192",
                     }
                 ],
+                "cookies": COOKIES_FILE_PATH  # Added cookies
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             x.download([link])
@@ -327,6 +335,7 @@ class YouTubeAPI:
             else:
                 proc = await asyncio.create_subprocess_exec(
                     "yt-dlp",
+                    "--cookies", COOKIES_FILE_PATH,  # Added cookies
                     "-g",
                     "-f",
                     "best[height<=?720][width<=?1280]",
