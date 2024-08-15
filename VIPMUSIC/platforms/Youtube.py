@@ -11,7 +11,7 @@ from youtubesearchpython.__future__ import VideosSearch
 from VIPMUSIC.utils.database import is_on_off
 from VIPMUSIC.utils.formatters import time_to_seconds
 
-COOKIES_FILE_PATH = "path/to/your/cookies.txt"  # Update with the local path to cookies.txt
+COOKIES_FILE_PATH = "cookies/cookies.txt"  # Update with the local path to cookies.txt
 
 async def shell_cmd(cmd):
     proc = await asyncio.create_subprocess_shell(
